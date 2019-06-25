@@ -1,0 +1,21 @@
+{
+  "name": "mock",
+  "version": "1.0.0",
+  "description": "mock数据",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mock": "node-dev index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "file-stream-rotator": "^0.4.1",
+    "mockjs": "^1.0.1-beta3",
+    "mongoose": "^5.6.1",
+    "morgan": "^1.9.1",
+    "node-dev": "^4.0.0",
+    "svg-captcha": "^1.4.0"
+  }
+}
