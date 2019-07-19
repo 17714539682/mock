@@ -45,33 +45,4 @@ router.post('/about', function(req, res) {
     })
 });
 
-var mongoose = require('mongoose');                 //引入对象
-var TodoModel = mongoose.model('user');             //引入模型
-
-router.post('/create', function(req, res) {
-  new TodoModel({                
-    id: 1,                       
-    phone:'13531544954',        
-    name: '刘德hua'
-  }).save(function(err, todo, count) {              //保存数据
-      // console.log('内容', todo, '数量', count);    //打印保存的数据
-      res.json({
-        code:'0',
-        msg:'success'
-      })
-  });
-});
-
-router.get('/search', function(req, res, next) {
-  //find          文档查询
-  //sort(字段名)   排序
-  //exec(cb)      查询回调
-  TodoModel.find().sort().exec(function(err, aa, count) {
-    res.json({
-      code:count,
-      msg:aa
-    })
-  });
-});
-
 module.exports = router

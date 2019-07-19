@@ -3,7 +3,6 @@ let app = express();
 var bodyParser = require('body-parser');    //post参数接收  
 var morgan = require('morgan');             //日志模块
 var fs = require('fs');                     //文件操作模块
-require('./db');
 
 morgan.token('requestParameters', function(req, res){
     if(req.method == 'GET'){
