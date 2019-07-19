@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "/Users/wuwei/Movies/mock/logs/.audit.json",
+    "files": [
+        {
+            "date": 1563506740935,
+            "name": "/Users/wuwei/Movies/mock/logs/accss-2019-29.log",
+            "hash": "c08c3c869688febabf18a0e7b18592f9"
+        }
+    ]
+}

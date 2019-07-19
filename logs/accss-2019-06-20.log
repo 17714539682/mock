@@ -1,6 +1,0 @@
-
-2019-06-20T09:14:33.078Z GET /mock?id=7878 304 {"id":"7878"} 4.402 ms
-2019-06-20T09:14:37.186Z POST /mock/about 200 {"pageNum":"1","pageSize":"10"} 13.769 ms
-2019-06-20T09:14:41.279Z POST /mock/about 200 {"pageNum":"1","pageSize":"10","phone":"13531544954","email":""} 0.644 ms
-2019-06-20T09:16:21.848Z GET /mock?id=7878 200 {"id":"7878"} 1.769 ms
-2019-06-20T09:21:47.760Z GET /mock 200 {} 0.307 ms

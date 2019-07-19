@@ -1,8 +1,8 @@
-let express = require('express');                 //引入express
-var bodyParser = require('body-parser');
-let app = express();                              //实例化express
-var morgan = require('morgan');
-var fs = require('fs');//文件模块
+let express = require('express');  
+let app = express();                                     
+var bodyParser = require('body-parser');    //post参数接收  
+var morgan = require('morgan');             //日志模块
+var fs = require('fs');                     //文件操作模块
 require('./db');
 
 morgan.token('requestParameters', function(req, res){
@@ -13,6 +13,7 @@ morgan.token('requestParameters', function(req, res){
     }
 });
 morgan.format('live-api', ':date[iso] :method :url :status :requestParameters :response-time ms');
+
 var FileStreamRotator = require('file-stream-rotator');
 //设置日志文件目录
 var logDirectory=__dirname+'/logs';
@@ -20,18 +21,19 @@ var logDirectory=__dirname+'/logs';
 fs.existsSync(logDirectory)||fs.mkdirSync(logDirectory);
 //创建一个写路由
 var accessLogStream=FileStreamRotator.getStream({
-filename:logDirectory+'/accss-%DATE%.log',
-frequency:'daily',
-verbose:false
+    filename:logDirectory+'/accss-%DATE%.log',
+    frequency:"custom",     //自定义日志周期
+    verbose: false, 
+    date_format: "YYYY-ww", //周
+    size:'5m',              //最大文件大小
+    max_logs:'30d'          //日志保留天数
 })
 
 app.use(morgan('live-api',{stream:accessLogStream}));
 
-// app.use(logger('hcsy',{stream:accessLogStream}));//将日志写入文件
-// app.use(logger('dev'));
-var birds = require('./api/index.js');
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/mock', birds);
+var apiRouter = require('./api/index.js');
+app.use(bodyParser.urlencoded({ extended: false })); //post参数传递中间件
+app.use('/mock', apiRouter);
 
 app.listen('8090', () => {
     console.log('监听端口 8090')
